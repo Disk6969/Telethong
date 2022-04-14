@@ -610,6 +610,8 @@ class MessageMethods:
             message: 'hints.MessageLike' = '',
             *,
             reply_to: 'typing.Union[int, types.Message]' = None,
+            send_as: 'hints.DialogLike' = None,
+
             attributes: 'typing.Sequence[types.TypeDocumentAttribute]' = None,
             parse_mode: typing.Optional[str] = (),
             formatting_entities: typing.Optional[typing.List[types.TypeMessageEntity]] = None,
@@ -845,6 +847,7 @@ class MessageMethods:
                 clear_draft=clear_draft,
                 no_webpage=not isinstance(
                     message.media, types.MessageMediaWebPage),
+                send_as=send_as,
                 schedule_date=schedule
             )
             message = message.message
@@ -866,6 +869,7 @@ class MessageMethods:
                 silent=silent,
                 background=background,
                 reply_markup=self.build_reply_markup(buttons),
+                send_as=send_as,
                 schedule_date=schedule
             )
 
@@ -892,6 +896,7 @@ class MessageMethods:
             entity: 'hints.EntityLike',
             messages: 'typing.Union[hints.MessageIDLike, typing.Sequence[hints.MessageIDLike]]',
             from_peer: 'hints.EntityLike' = None,
+            send_as: 'hints.DialogLike' = None,
             *,
             background: bool = None,
             with_my_score: bool = None,
@@ -1009,6 +1014,7 @@ class MessageMethods:
                 silent=silent,
                 background=background,
                 with_my_score=with_my_score,
+                send_as=send_as,
                 schedule_date=schedule
             )
             result = await self(req)

@@ -165,6 +165,8 @@ class Message(ChatGetter, SenderGetter, TLObject):
             # Common to Message and MessageService (mandatory)
             peer_id: types.TypePeer = None,
             date: Optional[datetime] = None,
+            noforwards: Optional[bool] = None,
+
 
             # Common to Message and MessageService (flags)
             out: Optional[bool] = None,
@@ -211,7 +213,8 @@ class Message(ChatGetter, SenderGetter, TLObject):
         self.edit_hide = edit_hide
         self.id = id
         self.from_id = from_id
-        self.peer_id = peer_id
+        self.peer_id = peer_id 
+        self.noforwards = noforwards
         self.fwd_from = fwd_from
         self.via_bot_id = via_bot_id
         self.reply_to = reply_to

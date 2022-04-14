@@ -113,6 +113,8 @@ class UploadMethods:
             buttons: 'hints.MarkupLike' = None,
             silent: bool = None,
             background: bool = None,
+            noforwards: bool = None,
+            send_as: 'hints.EntityLike' = None,
             supports_streaming: bool = False,
             schedule: 'hints.DateLike' = None,
             comment_to: 'typing.Union[int, types.Message]' = None,
@@ -364,7 +366,7 @@ class UploadMethods:
                     progress_callback=progress_callback, reply_to=reply_to,
                     parse_mode=parse_mode, silent=silent, schedule=schedule,
                     supports_streaming=supports_streaming, clear_draft=clear_draft,
-                    force_document=force_document, background=background,
+                    force_document=force_document, noforwards=noforwards, send_as=send_as, background=background,
                 )
                 file = file[10:]
                 captions = captions[10:]
@@ -377,7 +379,7 @@ class UploadMethods:
                     attributes=attributes, thumb=thumb, voice_note=voice_note,
                     video_note=video_note, buttons=buttons, silent=silent,
                     supports_streaming=supports_streaming, schedule=schedule,
-                    clear_draft=clear_draft, background=background,
+                    clear_draft=clear_draft, noforwards=noforwards, send_as=send_as, background=background,
                     **kwargs
                 ))
 
@@ -415,7 +417,7 @@ class UploadMethods:
                           progress_callback=None, reply_to=None,
                           parse_mode=(), silent=None, schedule=None,
                           supports_streaming=None, clear_draft=None,
-                          force_document=False, background=None, ttl=None):
+                          force_document=False, noforwards=None, send_as=None, background=None, ttl=None):
         """Specialized version of .send_file for albums"""
         # We don't care if the user wants to avoid cache, we will use it
         # anyway. Why? The cached version will be exactly the same thing
